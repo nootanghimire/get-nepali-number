@@ -14,7 +14,7 @@ var nums = {
 
 module.exports = function (strNum) {
   return new Promise (function (resolve, reject) {
-		var arrNumNe = strNum.toString().split('').map(function (ch) {
+	var arrNumNe = strNum.toString().split('').map(function (ch) {
     	if (ch === '.' || ch === ',') {
       	return ch;
     	}
