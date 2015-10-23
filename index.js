@@ -13,11 +13,16 @@ var nums = {
 };
 
 module.exports = function (strNum) {
-  var arrNumNe = strNum.toString().split('').map(function (ch) {
-    if (ch === '.' || ch === ',') {
-      return ch;
-    }
-    return nums[Number(ch)];
+  return new Promise (function (resolve, reject) {
+		var arrNumNe = strNum.toString().split('').map(function (ch) {
+    	if (ch === '.' || ch === ',') {
+      	return ch;
+    	}
+    	else if (ch >= '0' && ch <= '9') {
+    		throw new Error("Found Characters Other than numerals, comma, or dot.")
+    	}
+    	return nums[Number(ch)];
+  	});
+  	resolve(arrNumNe.join(''));  	
   });
-  return arrNumNe.join('');
 };
